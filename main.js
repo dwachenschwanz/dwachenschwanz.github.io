@@ -8,7 +8,7 @@ miro.onReady(() => {
   miro.initialize({
     extensionPoints: {
       bottomBar: {
-        title: "Daves Github New Board cleaner",
+        title: "Test Github New Board cleaner",
         svgIcon: iconsq,
         onClick: async () => {
           // Show modal and wait for user choice
