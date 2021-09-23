@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+
+  <body>
+    <div id="container"></div>
+    
+<!--     <input type="submit" onclick="makeGrid(); return false;"><br/><br/>
+     -->
+<!--     <input type="button" value="Simple Readiness Chart" onclick="getCoordinates('Simple'); return false;"><br/><br/> -->
+    
+    <input type="button" value="Copy Issues from BMC" onclick="copyIssues(); return false;"><br/><br/>
+    
+    <input type="button" value="Create Readiness Chart" onclick="getCoordinates('Complex'); return false;"><br/><br/>
+    
+    
+<!--     <input type="button" value="Create Issue Scanning Frame" onclick="makeIssueScanningFrame(); return false;"><br/> -->
+    
+<!--     <input type="button" value="Choose Experiment" onclick="chooseExperiment(); return false;"><br/><br/> -->
+    
+<!--     <input type="button" value="Choose Experiment for PNav" onclick="sendSelectedIssueToPNav(); return false;"><br/><br/> -->
+    
+<!--     <input type="button" value="Save Data" onclick="sendStickerDetailsToPNAV(); return false;"><br/><br/>     -->
+    
+    <table id = "pixelcanvas"></table>
+    
+    <iframe id="myIFrame" width="0" height="0" src="about:blank"></iframe>
+    
+    <script src="https://miro.com/app/static/sdk.1.1.js"></script>
+<!--     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script> -->
+    <script src="src/builder.js"></script>
+  </body>
+</html>
