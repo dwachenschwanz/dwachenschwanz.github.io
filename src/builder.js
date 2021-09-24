@@ -15,15 +15,659 @@ const bmcFrameEndY = bmcFrameStartY + bmcHeight;
 const copiedIssuesStartX = -2226;
 const copiedIssuesEndX = -833;
 
+const shapeStyle = {
+  shapeType: 3,
+  backgroundColor: "#87bfdd",
+  backgroundOpacity: 0.4,
+  borderColor: "transparent",
+  borderWidth: 2,
+  borderOpacity: 1,
+  borderStyle: 2,
+  fontFamily: 27,
+  textColor: "#1a1a1a",
+  textAlign: "l",
+  textAlignVertical: "t",
+  fontSize: 37,
+  bold: 0,
+  italic: 0,
+  underline: 0,
+  strike: 0,
+  highlighting: "",
+};
+
+const bmcColumnSpacing = 750;
+// const bmcStartX = -(bmcColumnSpacing/2+bmcColumnSpacing*8);
+
+const bmcColumnWidth = 700;
+const bmcDoubleRowHeight = 1500;
+
+
+
+const bmcStartX = -6264;
+const bmcStartY = 954;
+const bmcWidth1 = 697;
+const bmcWidth2 = 1810;
+const bmcHeight1 = 722;
+const bmcHeight2 = 1810;
+const bmcHeight3 = 340;
+const bmcSpacing = 45;
+
+
+const bmcX = [
+  bmcStartX,
+  bmcStartX + bmcWidth1 + bmcSpacing,
+  bmcStartX + bmcWidth1 + bmcSpacing,
+  bmcStartX + 2 * bmcWidth1 + 2 * bmcSpacing,
+  bmcStartX + 3 * bmcWidth1 + 3 * bmcSpacing,
+  bmcStartX + 3 * bmcWidth1 + 3 * bmcSpacing,
+  bmcStartX + 4 * bmcWidth1 + 4 * bmcSpacing,
+  bmcStartX,
+  bmcStartX + bmcWidth2 + bmcSpacing
+];
+
+const bmcY = [
+  bmcStartY,
+  bmcStartY,
+  bmcStartY + bmcHeight2 + bmcSpacing,
+  bmcStartY,
+  bmcStartY - bmcHeight1/2 - bmcSpacing/2,
+  bmcStartY + bmcHeight2 + bmcSpacing,
+  bmcStartY,
+  bmcStartY + bmcHeight2 + bmcSpacing,
+  bmcStartY + bmcHeight2 + bmcSpacing
+];
+
+const bmcWidth = [
+  bmcWidth1,
+  bmcWidth1,
+  bmcWidth1,
+  bmcWidth1,
+  bmcWidth1,
+  bmcWidth1,
+  bmcWidth1,
+  bmcWidth2,
+  bmcWidth2
+];
+
+const bmcHeight = [
+  bmcHeight2,
+  bmcHeight1,
+  bmcHeight1,
+  bmcHeight2,
+  bmcHeight1,
+  bmcHeight1,
+  bmcHeight2,
+  bmcHeight3,
+  bmcHeight3
+];
+
+
+const bmcText = [
+  "<p><strong>Key partners</strong></p><p>What are your key partners to get competitive advantage?</p>",
+  "<p><strong>Key activities</strong></p><p>What are the key steps to move ahead to your customers?</p>",
+  "<p><strong>Key resources</strong></p><p>What resources do you need to make your idea work?</p>",
+  "<p><strong>Key propositions</strong></p><p>How will you make your customers&#39; life happier?</p>",
+  "<p><strong>Customer relationships</strong></p><p>How often will you interact with your customers?</p>",
+  "<p><strong>Channels</strong></p><p>How are you going to reach your customers?</p>",
+  "<p><strong>Customer segments</strong></p><p>Who are your customers? Describe your target audience in a couple of words.</p>",
+  "<p><strong>Cost Structure</strong></p><p>How much are you planning to spend </p><p>on the product development and </p><p>marketing for a certain period?</p>",
+  "<p><strong>Revenue Streams</strong></p><p>How much are you planning </p><p>to earn in a certain period? </p><p>Compare your costs and revenues.</p>"
+];
+
+const bmcPlainText = [
+  "Key partners What are your key partners to get competitive advantage?",
+  "Key activities What are the key steps to move ahead to your customers?",
+  "<p><strong>Key resources</strong></p><p>What resources do you need to make your idea work?</p>",
+  "Key propositions How will you make your customers&#39; life happier?",
+  "Customer relationships How often will you interact with your customers?",
+  "Channels How are you going to reach your customers?",
+  "Customer segments Who are your customers? Describe your target audience in a couple of words.",
+  "Cost Structure How much are you planning to spend on the product development and marketing for a certain period?",
+  "Revenue Streams How much are you planning to earn in a certain period? Compare your costs and revenues."
+];
+
+function makeNewBMC() {
+  const widgets = [];
+  for ( let i = 0; i < 9; ++i){
+    widgets.push(
+        {
+          type:"SHAPE",
+          style: shapeStyle,
+          x: bmcX[i],
+          y: bmcY[i],
+          width: bmcWidth[i],
+          height: bmcHeight[i],
+          text: bmcText[i],
+          plainText: bmcPlainText[i]
+
+        }
+    );
+    miro.board.widgets.create(widgets);
+  }
+
+}
+
+
+function makeBMC() {
+  miro.board.widgets.create([
+    /*
+    {
+        "type": "FRAME",
+        "bounds": {
+            "x": -4781.387461938883,
+            "y": 1072.929022366622,
+            "top": -22.070977633378106,
+            "left": -6695.387461938883,
+            "bottom": 2167.929022366622,
+            "right": -2867.3874619388826,
+            "width": 3828,
+            "height": 2190
+        },
+        "style": {
+            "backgroundColor": "#ffffff"
+        },
+        "metadata": {},
+        "capabilities": {
+            "editable": true
+        },
+        
+        "x": -4781.387461938883,
+        "y": 1072.929022366622,
+        "width": 3828,
+        "height": 2190,
+        "title": "",
+        "frameIndex": 0,
+    },
+    */
+   // #9 - Revenue Streams
+    {
+      type: "SHAPE",
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -3853.3852554974524,
+      y: 1908.7220881335218,
+      width: 1809.35153887163,
+      height: 340.244804360296,
+      text: "<p><strong>Revenue Streams</strong></p><p>How much are you planning </p><p>to earn in a certain period? </p><p>Compare your costs and revenues.</p>",
+      plainText:
+        "Revenue Streams How much are you planning  to earn in a certain period?  Compare your costs and revenues.",
+    },
+
+    // #7- Customer Segments
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -3297.029883969962,
+      y: 953.6560167632808,
+      width: 696.634431279335,
+      height: 1486.04379241766,
+      text: "<p><strong>Customer segments</strong></p><p>Who are your customers? Describe your target audience in a couple of words.</p>",
+      plainText:
+        "Customer segments Who are your customers? Describe your target audience in a couple of words.",
+    },
+
+    // #6 - Channels
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+
+      x: -4041.2087117194824,
+      y: 1335.6474081130318,
+      width: 696.634431279335,
+      height: 722.061009718214,
+      text: "<p><strong>Channels</strong></p><p>How are you going to reach your customers?</p>",
+      plainText: "Channels How are you going to reach your customers?",
+    },
+
+    // #5 - Channel Relationships
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+      x: -4041.2087117194824,
+      y: 571.6646254135576,
+      width: 696.634431279335,
+      height: 722.061009718214,
+      rotation: 0,
+      text: "<p><strong>Customer relationships</strong></p><p>How often will you interact with your customers?</p>",
+      plainText:
+        "Customer relationships How often will you interact with your customers?",
+    },
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#ffffff",
+        backgroundOpacity: 1,
+        borderColor: "transparent",
+        borderWidth: 24,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 10,
+        textColor: "#ffffff",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 50,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -4781.836469334772,
+      y: 1068.9953430335418,
+      width: 3728.72123191848,
+      height: 2081.64518335326,
+
+      text: "",
+      plainText: "",
+    },
+
+    // #4 - Key Propositions
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+      x: -4784.926396951343,
+      y: 953.6560167632808,
+      width: 696.634431279335,
+      height: 1486.04379241767,
+      text: "<p><strong>Key propositions</strong></p><p>How will you make your customers&#39; life happier?</p>",
+      plainText:
+        "Key propositions How will you make your customers' life happier?",
+    },
+    {
+      type: "TEXT",
+
+      style: {
+        backgroundColor: "transparent",
+        backgroundOpacity: 1,
+        textAlign: "l",
+        textColor: "#1a1a1a",
+        fontFamily: 27,
+        bold: 1,
+        underline: 0,
+        italic: 0,
+        strike: 0,
+        borderColor: "transparent",
+        borderOpacity: 1,
+        borderWidth: 2,
+        borderStyle: 2,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -4797.454107732912,
+      y: 119.40343595568584,
+      width: 709.26,
+      scale: 5.21318197707248,
+      text: "<p><strong>The Business Model Canvas</strong></p>",
+      plainText: "The Business Model Canvas",
+    },
+
+    // #3 - Key Resources
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+      x: -5525.859750669742,
+      y: 1335.6474081130318,
+      width: 696.634431279335,
+      height: 722.061009718216,
+      text: "<p><strong>Key resources</strong></p><p>What resources do you need to make your idea work?</p>",
+      plainText:
+        "Key resources What resources do you need to make your idea work?",
+    },
+    // #8 - Cost Structure
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -5708.608421601102,
+      y: 1908.7220881335218,
+      width: 1808.25066510478,
+      height: 340.24480436029,
+      text: "<p><strong>Cost Structure</strong></p><p>How much are you planning to spend </p><p>on the product development and </p><p>marketing for a certain period?</p>",
+      plainText:
+        "Cost Structure How much are you planning to spend  on the product development and  marketing for a certain period?",
+    },
+
+    // #2 - Key Activities
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -5525.859750669682,
+      y: 571.664625413544,
+      width: 696.634431279335,
+      height: 722.061009718216,
+      text: "<p><strong>Key activities</strong></p><p>What are the key steps to move ahead to your customers?</p>",
+      plainText:
+        "Key activities What are the key steps to move ahead to your customers?",
+    },
+    {
+      type: "TEXT",
+
+      style: {
+        backgroundColor: "transparent",
+        backgroundOpacity: 1,
+        textAlign: "l",
+        textColor: "#1a1a1a",
+        fontFamily: 10,
+        padding: 0,
+        bold: 0,
+        underline: 0,
+        italic: 0,
+        strike: 0,
+        borderColor: "transparent",
+        borderOpacity: 1,
+        borderWidth: 0,
+        borderStyle: 2,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -6075.7478498035725,
+      y: 2127.229897734692,
+      width: 404,
+      scale: 2.57142857142857,
+      text: "<p>Released under Common Creative License by strategyzer.com</p>",
+      plainText: "Released under Common Creative License by strategyzer.com",
+    },
+
+    // #1 Key Partners
+    {
+      type: "SHAPE",
+
+      style: {
+        shapeType: 3,
+        backgroundColor: "#87bfdd",
+        backgroundOpacity: 0.4,
+        borderColor: "transparent",
+        borderWidth: 2,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 27,
+        textColor: "#1a1a1a",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 37,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      metadata: {},
+      capabilities: {
+        editable: true,
+      },
+      clientVisible: true,
+
+      x: -6264.416538513833,
+      y: 953.6560167632808,
+      width: 696.6344312793,
+      height: 1486.04379241767,
+      text: "<p><strong>Key partners</strong></p><p>What are your key partners to get competitive advantage?</p>",
+      plainText:
+        "Key partners What are your key partners to get competitive advantage?",
+    },
+  ]);
+}
+
 // frame maker for issue scanning
 function makeIssueScanningFrame() {
   miro.board.widgets.create([
     {
+      type: "SHAPE",
+      style: {
+        shapeType: 3,
+        backgroundColor: "#ffffff",
+        backgroundOpacity: 1,
+        borderColor: "transparent",
+        borderWidth: 24,
+        borderOpacity: 1,
+        borderStyle: 2,
+        fontFamily: 10,
+        textColor: "#ffffff",
+        textAlign: "l",
+        textAlignVertical: "t",
+        fontSize: 50,
+        bold: 0,
+        italic: 0,
+        underline: 0,
+        strike: 0,
+        highlighting: "",
+      },
+      x: -4781.387461938883,
+      y: 1068.9953430335418,
+      width: 3728.72123191848,
+      height: 2081.64518335326
+    },
+
+    {
+      type: "TEXT",
+      x: "-4797",
+      y: "-120",
+      width: 710,
+      scale: 5.213,
+      text: "<p><strong>The Business Model Canvas</strong></p>",
+      plainText: "The Business Model Canvas",
+    },
+
+    {
       type: "frame",
-      x: -4684,
-      y: 979,
+      x: -4781.387461938883,
+      y: 1072.929022366622,
       width: bmcWidth,
       height: bmcHeight,
+      // title: "Business Model Canvas",
+      capabilities: {
+        editable: false,
+      },
       style: {
         backgroundColor: "#ffffff",
       },
