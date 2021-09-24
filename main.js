@@ -11,7 +11,7 @@ miro.onReady(() => {
         title: "Test Github New Board cleaner",
         svgIcon: iconsq,
         onClick: async () => {
-            widgets =
+            const widgets =
             [
     {
         "id": "3074457364496668572",
